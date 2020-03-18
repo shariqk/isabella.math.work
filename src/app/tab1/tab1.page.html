@@ -1,17 +1,73 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Addition
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Addition</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div style="width:100%; max-width: 700px; margin:auto;" class="ion-text-center">
+    <ion-grid>
+
+      <ion-row>
+
+        <ion-col size="5" class="numberCard">
+          {{number1}}
+        </ion-col>
+
+        <ion-col size="2" class="numberCard">
+          +
+        </ion-col>
+
+        <ion-col size="5" class="numberCard">
+          {{number2}}
+        </ion-col>
+
+        <!--
+        <ion-col size="4" class="numberCard">
+          <ion-input id="inputAnswer" autofocus="true" maxlength="2" #inputAnswer type="tel" [(ngModel)]="result" placeholder="Answer" (ionChange)="changed()"></ion-input>
+        </ion-col>
+        -->
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button (click)="generateNumbers()">
+            Get Numbers
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="2" *ngFor="let b of board" class="boardNumber" (click)="checkAnswer(b)" style="cursor:pointer;">
+          <ion-icon color="primary "*ngIf="b.selected==true" name="checkmark-circle-outline"></ion-icon>
+          {{b.n}}
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button (click)="generateBoard()">
+            Get New Board
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+
+    <script>
+    window.onload = function() {
+      document.getElementById("inputAnswer").focus();
+    };
+    </script>
+  </div>
+
 </ion-content>

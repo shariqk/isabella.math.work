@@ -1,5 +1,7 @@
 {
   "name": "isabella.math.work",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
